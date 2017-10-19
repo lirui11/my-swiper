@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#box{width:500px;height:300px;margin:20px auto;position:relative;border: 1px solid #f00;overflow: hidden;}
+		ul{width:2000px;height: 300px;position:absolute;top:0;left:0;}
+		li{width:500px;height:300px;list-style: none;float: left;}
+		img{width:500px;height:300px}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script src="move.js"></script>
+	<script>
+		var ul = document.getElementsByTagName('ul')[0],
+			lis = ul.getElementsByTagName('li');
+		// setInterval(function(){
+		// 	startMove(ul,-500,'left',function(){
+		// 		ul.appendChild(lis[0]);
+		// 		ul.style.left = 0;
+		// 	})
+		// },2000)
+
+		setInterval(function(){
+ 			startMove(ul,-500,'left',function(){
+ 				ul.appendChild(lis[0]);
+ 				ul.style.left = 0;
+ 			})	 
+		},2000)
+		
+	</script>
+</body>
+</html>

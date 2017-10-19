@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{padding:0;margin:0;list-style:none;}
+		#box{width:500px;height:300px;margin:20px auto;position:relative;}
+		ul{width:2000px;height:100%;position:absolute;top:0;left:0;}
+		li{width:500px;height:100%;float:left;}
+		img{width:100%;height:100%;}
+		span{padding:5px 5px;background:rgba(0,0,0,.5);position:absolute;top:150px;color:#fff;}
+		#left{left:10px;}
+		#right{right:10px}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+		</ul>
+		<span id="left">上一张</span>
+		<span id="right">下一张</span>
+	</div>
+	<script src="move.js"></script>
+	<script>
+		var ul = document.getElementsByTagName('ul')[0],
+			lis = ul.getElementsByTagName('li'),
+			box = document.getElementById('box'),
+			left = document.getElementById('left'),
+			right = document.getElementById('right');
+		var timer = null;
+		right.onclick = function(){
+			btn();
+		}
+		left.onclick = function(){
+			ul.insertBefore(lis[lis.length-1],lis[0]);
+			ul.style.left = '-500px';
+			startMove(ul,0,'left')
+		}
+		
+		timer = setInterval(btn,500);
+		
+		box.onmouseover = function(){
+			clearInterval(timer);
+		}
+		box.onmouseout = function(){
+			timer = setInterval(btn,500);
+		}
+		function btn(){
+			startMove(ul,-500,'left',function(){
+				ul.appendChild(lis[0]);
+				ul.style.left = 0;
+			})
+		}
+		
+	</script>
+</body>
+</html>

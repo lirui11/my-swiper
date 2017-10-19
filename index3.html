@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#box{width:500px;height:300px;margin:20px auto;border: 1px solid #f00;}
+		ul{width:2000px;height: 300px;position:relative;top:0;left:0;}
+		li{width:500px;height:300px;list-style: none;position:absolute;left:0;top:0;opacity:0}
+		img{width:100%;height:100%;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li style="opacity:1"><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/1.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script src="move.js"></script>
+	<script>
+		var ul = document.getElementsByTagName('ul')[0],
+			lis = ul.getElementsByTagName('li');
+		
+		var j = 0;
+		setInterval(function(){
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.opacity = 0;
+			}
+			j++;
+			
+			if(j>lis.length-1)j=0
+			startMove(lis[j],100,'opacity')
+		
+		},2000)
+	</script>
+</body>
+</html>
